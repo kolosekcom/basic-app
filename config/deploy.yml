@@ -1,0 +1,17 @@
+service: basicapp
+image: kolosek/basicapp
+servers:
+  - 5.161.63.224
+registry:
+  username: kolosek
+  password:
+    - MRSK_REGISTRY_PASSWORD
+env:
+  secret:
+    - RAILS_MASTER_KEY
+builder:
+  multiarch: false
+traefik:
+  host_port: 81
+  labels:
+    traefik.http.routers.basicapp.rule: Host(\'basic.kolosek.me\'')
